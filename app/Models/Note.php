@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace FireflyIII\Models;
 
+use FireflyIII\Support\Minidauth\Sealable;
 use FireflyIII\Support\Models\ReturnsIntegerIdTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +33,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Note extends Model
 {
     use ReturnsIntegerIdTrait;
+    use Sealable;
     use SoftDeletes;
+
+    // minidauth: seal the note body.
+    public array $minidauthSealed = ['text'];
 
     protected $fillable = ['title', 'text', 'noteable_id', 'noteable_type'];
 

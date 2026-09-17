@@ -1,3 +1,22 @@
+<!-- minidauth:start -->
+> ## 🔒 This build is minidauth'd
+>
+> **Firefly III, with a key nobody holds.** Payee names, IBANs, transaction descriptions and your notes are sealed before they ever reach the database, encrypted with a key that is never assembled anywhere, not even to decrypt. The key lives as threshold shares across the [Tide](https://tide.org) network, so the classic breach, someone walking off with your budget file or a backup, turns up nothing readable.
+>
+> - **Your database holds only ciphertext.** A stolen SQLite file or a leaked backup is useless to whoever takes it.
+> - **There is no standing key to steal.** The key is never whole, not in this app and not on any single server.
+> - **Reads are governed, not assumed.** A quorum grants the reading role. Revoke it and reads stop everywhere, at once.
+> - **The numbers still add up.** Balances and amounts stay in the clear, so reports and charts work exactly as before.
+> - **Nothing else changes.** Firefly III works exactly as it does upstream, and sealing stays off until you turn it on.
+>
+> See how it works → **[minidauth](https://github.com/sashyo/minidauth)** · **[dauth.me](https://www.dauth.me)**
+<!-- minidauth:end -->
+
+<!-- minidauth-badge -->
+<p align="center">
+  <a href="https://github.com/sashyo/minidauth"><img alt="minidauth'd" src="https://img.shields.io/badge/minidauth%27d-sealed_at_rest-2ea44f?style=for-the-badge&logo=lock&logoColor=white"></a>
+</p>
+
 <p align="center">
   <a href="https://firefly-iii.org/">
     <img src="https://raw.githubusercontent.com/firefly-iii/firefly-iii/develop/.github/assets/img/logo-small.png" alt="Firefly III" width="120" height="178">

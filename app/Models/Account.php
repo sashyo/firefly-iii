@@ -25,6 +25,7 @@ namespace FireflyIII\Models;
 
 use FireflyIII\Enums\AccountTypeEnum;
 use FireflyIII\Handlers\Observer\DeletedAccountObserver;
+use FireflyIII\Support\Minidauth\Sealable;
 use FireflyIII\Support\Models\ReturnsIntegerIdTrait;
 use FireflyIII\Support\Models\ReturnsIntegerUserIdTrait;
 use FireflyIII\User;
@@ -53,7 +54,11 @@ class Account extends Model
     use HasFactory;
     use ReturnsIntegerIdTrait;
     use ReturnsIntegerUserIdTrait;
+    use Sealable;
     use SoftDeletes;
+
+    // minidauth: seal a payee/account's name and IBAN before they reach the database. Numeric balances stay clear.
+    public array $minidauthSealed    = ['name', 'iban'];
 
     protected $fillable              = ['user_id', 'user_group_id', 'account_type_id', 'name', 'active', 'virtual_balance', 'iban', 'native_virtual_balance'];
 

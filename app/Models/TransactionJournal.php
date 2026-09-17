@@ -27,6 +27,7 @@ use Carbon\Carbon;
 use FireflyIII\Casts\SeparateTimezoneCaster;
 use FireflyIII\Enums\TransactionTypeEnum;
 use FireflyIII\Handlers\Observer\DeletedTransactionJournalObserver;
+use FireflyIII\Support\Minidauth\Sealable;
 use FireflyIII\Support\Models\ReturnsIntegerIdTrait;
 use FireflyIII\Support\Models\ReturnsIntegerUserIdTrait;
 use FireflyIII\User;
@@ -56,7 +57,11 @@ class TransactionJournal extends Model
 {
     use ReturnsIntegerIdTrait;
     use ReturnsIntegerUserIdTrait;
+    use Sealable;
     use SoftDeletes;
+
+    // minidauth: seal what a transaction is about. The amount, dates and links stay clear.
+    public array $minidauthSealed = ['description'];
 
     protected $fillable = [
         'user_id',
